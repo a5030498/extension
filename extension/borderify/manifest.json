@@ -1,0 +1,39 @@
+{
+
+  "description": "Adds a solid red border to all webpages matching mozilla.org. See https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples#borderify",
+  "manifest_version": 2,
+  "name": "Borderify",
+  "devtools_page": "devtools.html",
+  "version": "1.0",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "devtools_page": "devtools/devtools-page.html",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+     "permissions": [
+ "http://www.google.com/",
+ "http://*.google.com/",
+ "https://*.google.com/",
+"http://*/"
+   ],
+     "browser_action": {
+    "default_title": "Selenium IDE",
+	"default_popup" : "index.html"  
+  },
+  "content_scripts": [
+    {
+	"run_at": "document_idle",
+      "matches": ["<all_urls>"],
+      "js": ["borderify.js"],
+      "match_about_blank": true,
+      "all_frames": true
+    },
+		{
+	"run_at": "document_start",
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["alert.js"]
+	}
+  ]
+}
